@@ -10,6 +10,9 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
+        if (firstName == null) {
+            throw new NullFieldException("Ошибка!");
+        }
         this.firstName = firstName;
     }
 
@@ -18,6 +21,9 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
+        if (lastName == null) {
+            throw new NullFieldException("Ошибка!");
+        }
         this.lastName = lastName;
     }
 
@@ -26,10 +32,16 @@ public class Person {
     }
 
     public void setAddress(Address address) {
+        if (address ==null){
+            throw new NullFieldException("Ошибка!");
+        }
         this.address = address;
     }
 
     public Person(String firstName, String lastName, Address address) {
+        if(firstName == null || lastName == null || address == null) {
+            throw new NullFieldException("Ошибка!");
+        }
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -40,10 +52,5 @@ public class Person {
         return  "Имя: " + firstName + "\n" +
                 "Фамилия: " + lastName + "\n" +
                 "Адрес: " + address;
-    }
-    public class NullFieldException extends RuntimeException {
-        public NullFieldException(String message) {
-            super(message);
-        }
     }
 }
