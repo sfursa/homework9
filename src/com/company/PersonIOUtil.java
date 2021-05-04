@@ -1,14 +1,23 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 public class PersonIOUtil {
-    public static void writePersons(){
-        String file;
-        Collection collection;
+    private String file;
 
-        Person persona = new Person("Sergei", "Fursa", new Address("Slutsk", "Tutdrbnva", 13));
-        Person personb = new Person("Olga", "Fursa", new Address("Slutsk", "Tutdrbnva", 13));
+    public static void writePersons(String file, List<Person>personList) {
+        try (FileWriter writer = new FileWriter(file)) {
+            for (Person person : personList)
+                writer.write(str);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

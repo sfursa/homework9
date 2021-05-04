@@ -9,25 +9,25 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Person person1= new Person("Евгений", "Казачок", new Address("Старые Дороги", "Пионерская", 21));
-        Person person2 = new Person("Сергей", "Фурса", new Address("Слуцк", "Тутаринова", 13));
-        Person person3 = new Person("Коля", "Сухан", new Address("Минск", "Партизанский", 150));
+        Person p1= new Person("Евгений", "Казачок", new Address("Старые Дороги", "Пионерская", 21));
+        Person p2 = new Person("Сергей", "Фурса", new Address("Слуцк", "Тутаринова", 13));
+        Person p3 = new Person("Коля", "Сухан", new Address("Минск", "Партизанский", 150));
 
-        List<Person>personList = new ArrayList<>();
-        personList.add(person1);
-        personList.add(person2);
-        personList.add(person3);
+        List<Person>perList = new ArrayList<>();
+        perList.add(p1);
+        perList.add(p2);
+        perList.add(p3);
 
-        for (Person person : personList){
+        for (Person person : perList){
             System.out.println(person);
             System.out.println();
         }
     }
 
-    public static void nothing(String a) throws EmptySourceFileException {
-        if (a == null) {
-            throw new EmptySourceFileException();
-
-        }
-    }
+//    public static void nothing(String a) throws EmptySourceFileException {
+//        if (a == null) {
+//            throw new EmptySourceFileException();
+//
+//        }
+//    }
 }
