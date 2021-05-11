@@ -1,19 +1,17 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class PersonIOUtil {
-    private String file;
+    private String fileName;
     public final static String DELIMITER = ";";
 
-    public static void writePerson (String file, List<Person> perList) {
-        try (FileWriter writer = new FileWriter(file)) {
-            for(Person p : perList){
+    public static void writePersons(String fileName, List<Person> perList) {
+//        this.fileName = fileName;
+        try (FileWriter writer = new FileWriter(fileName)) {
+            for (Person p : perList) {
                 writer.write(toTxtString(p));
             }
         } catch (IOException e) {
@@ -27,6 +25,20 @@ public class PersonIOUtil {
                 person.getAddress().getCity() + DELIMITER +
                 person.getAddress().getStreet() + DELIMITER +
                 person.getAddress().getHouse() + DELIMITER + "\n";
+    }
 
+    public static List<Person> readPersons(String fileName) throws EmptySourceFileException {
+        List<Person> persons = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String s;
+            while ((s = reader.readLine()) != null) {
+                if (s == null || s.isEmpty()) {
+                    throw new EmptySourceFileException("ОШИБКА! Файл не существует или пустой.");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return persons;
     }
 }
